@@ -1,0 +1,55 @@
+.allBlock{
+   background: linear-gradient(0deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("https://files.virgool.io/upload/users/3039/posts/sadhmmnbalwy/gbb3bpmqkbhd.jpeg");
+   background-size: cover;
+   background-attachment: fixed;
+   width: 100%;
+   margin: 0;
+   min-height: 97vh;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.area{
+    background-color:#F3F4F6 ;
+    padding: 45px 65px;
+    width: 600px;
+    border-radius: 1.5rem;
+}
+.text {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-style:oblique;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.author{
+    bottom: 8px;
+    margin-left: 400px;
+    font-size: 18px;
+    font-style: italic;
+}
+.buttons {
+    float: none;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 25px;
+}
+.button-buuton{
+    padding: 10px;
+    width: 150px;
+    background-color: transparent;
+    font-size: 16px;
+    border: 3px solid rgb(73, 163, 241);
+    border-radius: 25px;
+    color: rgb(73, 163, 241);
+    text-decoration: none;
+    text-align: center;
+    transition: ease-in-out 0.3s;
+    outline: 0;
+}
+.button-buuton::hover{
+    background-color:rgb(73, 163, 241) ;
+    color: rgb(73, 163, 241);
+    cursor: pointer;
+}
