@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
 import "../assets/css/listOfQuotes.css";
 import emojiBaby from "../assets/images/emoji baby.png";
 import emojiPerson from "../assets/images/emoji person.png";
@@ -6,6 +7,10 @@ import emojiPerson from "../assets/images/emoji person.png";
 function ListOfQuotes() {
   const [quote, setQuote] = useState([]);
   const [ages, setAge] = useState("");
+  const [pageNumber, setPageNumber] = useState(0);
+
+  const quotePerPage = 10;
+  const pagesVisited = pageNumber * quotePerPage;
 
   const fetchData = () => {
     fetch("https://api.quotable.io/quotes")
@@ -42,6 +47,12 @@ function ListOfQuotes() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const pageCount = Math.ceil(quote.length / quotePerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
   return (
     <div className="list-quotes">
       <h2 className="title">List of Quotes</h2>
@@ -55,7 +66,7 @@ function ListOfQuotes() {
           </tr>
         </thead>
         <tbody>
-          {quote.map((item, index) => (
+          {quote.slice(pagesVisited, pagesVisited + quotePerPage).map((item, index) => (
             <tr key={index}>
               <td>{item._id}</td>
               <td>{item.author}</td>
@@ -74,11 +85,23 @@ function ListOfQuotes() {
           ))}
         </tbody>
       </table>
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"paginationBttns"}
+        previousLinkClassName={"previousBttn"}
+        nextLinkClassName={"nextBttn"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
+      />
       <div style={{ marginLeft: "650px" }}>
         <a href="/random-quote" className="Button">
           Random quote{" "}
         </a>
       </div>
+    
     </div>
   );
 }
